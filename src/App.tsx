@@ -1,5 +1,7 @@
+import Landing from '@/components/landing'
+
 function App() {
-  return <>Minimal project</>
+  return <Landing />
 }
 
 export default App
