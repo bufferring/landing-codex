@@ -1,3 +1,4 @@
+import AvatarPhoto from '@/components/AvatarPhoto'
 import { FaGoogle, FaGithub, FaInstagram } from 'react-icons/fa'
 
 function Landing() {
@@ -6,21 +7,15 @@ function Landing() {
       <div className="grid w-full max-w-6xl grid-cols-1 overflow-hidden rounded-xl bg-white shadow-2xl md:grid-cols-2">
         <div className="flex flex-col justify-between p-10 md:p-14">
           <div>
-            <div className="mb-8 flex items-center gap-3">
+            <div className="mb-6 flex items-center gap-3">
               <span className="text-lg font-semibold">UNEFA Codex</span>
             </div>
 
             <h1 className="mb-2 text-3xl font-bold">Welcome Back</h1>
-            <p className="mb-6 text-gray-400">Elige tu editor de codigo</p>
-
-            <div className="mb-6 inline-flex rounded-xl border border-gray-100 bg-gray-50 p-2 shadow-sm">
-              <button className="rounded-lg px-6 py-2 text-sm font-medium">Nvim</button>
-              <button className="rounded-lg px-6 py-2 text-sm font-medium">VSC</button>
-            </div>
 
             <label className="mb-3 block text-sm text-gray-500">Workspace</label>
             <div className="flex items-center rounded-xl border border-gray-100 bg-gray-50 p-2 shadow-sm">
-              <label>Elige una fruta:</label>
+              <label>Elige un Workspace:</label>
             </div>
 
             <button className="mt-6 w-full rounded-lg bg-gradient-to-r from-blue-600 to-blue-500 py-3 font-semibold text-white shadow-md hover:from-blue-700">
@@ -46,12 +41,16 @@ function Landing() {
             </div>
           </div>
 
-          <p className="mt-8 text-xs text-gray-400">Somo la cabra lo reye con lo dioses</p>
+          <p className="mt-4 text-xs text-gray-400">Somo la cabra lo reye con lo dioses</p>
         </div>
 
-        <div className="flex items-center justify-center bg-gradient-to-br from-blue-50 to-blue-200 p-8">
-          <div className="bg-blue-100 shadow-xl">
-            <img src="./src/assets/YO.jpg" alt="mauricio" />
+        <div className="bg-gradient-to-br from-blue-50 to-blue-200">
+          <div className="relative flex h-full w-full items-center justify-end">
+            <div className="absolute left-12 h-48 w-48 -translate-x-1/4 bg-blue-300 opacity-30 blur-3xl" />
+
+            <div className="relative z-10">
+              <AvatarPhoto alt="Mauricio" size={260} />
+            </div>
           </div>
         </div>
       </div>
