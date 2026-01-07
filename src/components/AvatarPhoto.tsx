@@ -17,7 +17,6 @@ function AvatarPhoto({
   alt = 'Avatar',
   size = 280,
   className = '',
-  rounded = true,
   loading = 'lazy',
   onErrorSrc = defaultPhoto,
   style = {},
@@ -29,7 +28,7 @@ function AvatarPhoto({
 
   return (
     <div
-      className={`relative flex items-center justify-end ${className}`}
+      className={`${className}`}
       style={{ lineHeight: 0 }}
     >
       <img
@@ -37,10 +36,8 @@ function AvatarPhoto({
         alt={alt}
         loading={loading}
         style={{
-          objectFit: 'cover',
           display: 'block',
           ...sizeStyle,
-          borderRadius: rounded ? 12 : 0,
           ...style,
         }}
         onError={(e) => {

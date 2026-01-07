@@ -44,14 +44,8 @@ function Landing() {
           <p className="mt-4 text-xs text-gray-400">Somo la cabra lo reye con lo dioses</p>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-50 to-blue-200">
-          <div className="relative flex h-full w-full items-center justify-end">
-            <div className="absolute left-12 h-48 w-48 -translate-x-1/4 bg-blue-300 opacity-30 blur-3xl" />
-
-            <div className="relative z-10">
-              <AvatarPhoto alt="Mauricio" size={260} />
-            </div>
-          </div>
+        <div className="object-cover">
+          <AvatarPhoto alt="Mauricio" size={260} />
         </div>
       </div>
     </div>
