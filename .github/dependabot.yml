@@ -1,9 +1,15 @@
 version: 2
 updates:
-  - package-ecosystem: 'npm'
-    directory: '/'
+  - package-ecosystem: npm
+    directory: /
     schedule:
-      interval: 'weekly'
+      interval: weekly
     ignore:
-      - dependency-name: 'tailwindcss'
-    open-pull-requests-limit: 10
+      - dependency-name: tailwindcss
+    groups:
+      all-dependencies:
+        patterns:
+          - '*'
+    open-pull-requests-limit: 1
+    commit-message:
+      prefix: 'Chore:'
