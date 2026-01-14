@@ -1,4 +1,3 @@
-import AvatarPhoto from '@/components/AvatarPhoto'
 import { FaGoogle, FaGithub, FaInstagram } from 'react-icons/fa'
 
 function Landing() {
@@ -44,9 +43,7 @@ function Landing() {
           <p className="mt-4 text-xs text-gray-400">Somo la cabra lo reye con lo dioses</p>
         </div>
 
-        <div className="object-cover">
-          <AvatarPhoto alt="Mauricio" size={260} />
-        </div>
+        <div className="object-cover"></div>
       </div>
     </div>
   )
