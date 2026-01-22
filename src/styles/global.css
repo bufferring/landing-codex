@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.scrollbar {
+  scrollbar-gutter: stable;
+
+  /* Firefox */
+  scrollbar-width: thin;
+}
+
+/* WebKit / Blink */
+.scrollbar::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.scrollbar.scrollbar-rounded::-webkit-scrollbar-track,
+.scrollbar.scrollbar-rounded::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+}
+
+.scrollbar {
+  scrollbar-color: rgba(0, 89, 179, 0.7) transparent;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 89, 179, 0.7);
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(38, 147, 255, 0.7);
+}

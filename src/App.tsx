@@ -1,7 +1,7 @@
-import Landing from '@/components/Landing'
+import LoginPage from '@pages/LoginPage'
 
-function App() {
-  return <Landing />
+export const App = () => {
+  return <LoginPage />
 }
 
 export default App
