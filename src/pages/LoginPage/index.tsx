@@ -11,6 +11,8 @@ import BgPhoto from '@assets/bg.webp'
 import AsideContent from './components/AsideContent'
 import LoadingContainer from './components/LoadingContainer'
 
+import envConfig from '@config/env'
+
 // Function component for login page.
 export const LoginPage: FC = () => {
   // Determine if viewport is desktop size.
@@ -18,22 +20,28 @@ export const LoginPage: FC = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [workspace, setWorkspace] = useState<string | null>(null)
+  const [usersNum, setUsersNum] = useState<number>(1)
 
   // Simulate loading delay and set loading state.
   useEffect(() => {
-    // Helper to pause execution for given milliseconds.
     const load = async () => {
       const sleep = (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms))
-      await sleep(3000)
+      await sleep(1500)
+
+      const response = await fetch(envConfig.API_URL + '/users')
+
+      if (!response.ok) {
+        console.error(response)
+      }
+
+      const data = await response.json()
+
+      setUsersNum(data.workspaces)
       setIsLoading(false)
     }
+
     load()
   }, [isDesktop])
-
-  // Log workspace changes for debugging.
-  useEffect(() => {
-    console.log(workspace)
-  }, [workspace])
 
   // Update selected workspace.
   const onSelectWorkspace = (value: string) => {
@@ -124,7 +132,11 @@ export const LoginPage: FC = () => {
         >
           {isDesktop ? (
             <aside className="left-0 top-0 z-10 flex w-[90%] items-start sm:static sm:w-full sm:flex-row sm:justify-end sm:rounded-none">
-              <AsideContent workspace={workspace} onSelectWorkspace={onSelectWorkspace} />
+              <AsideContent
+                workspace={workspace}
+                onSelectWorkspace={onSelectWorkspace}
+                workspacesNum={usersNum}
+              />
             </aside>
           ) : (
             <AnimatePresence>
@@ -137,7 +149,11 @@ export const LoginPage: FC = () => {
                   animate="visible"
                   exit="exit"
                 >
-                  <AsideContent workspace={workspace} onSelectWorkspace={onSelectWorkspace} />
+                  <AsideContent
+                    workspace={workspace}
+                    onSelectWorkspace={onSelectWorkspace}
+                    workspacesNum={usersNum}
+                  />
                 </motion.aside>
               )}
             </AnimatePresence>

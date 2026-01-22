@@ -12,12 +12,13 @@ import Select from '@components/Select'
 import Button from '@components/Button'
 
 interface Props {
+  workspacesNum: number
   workspace: string | null
   onSelectWorkspace: (value: string) => void
 }
 
 // AsideContent: functional component rendering UI for workspace selection and navigation.
-const AsideContent: React.FC<Props> = ({ workspace, onSelectWorkspace }) => (
+const AsideContent: React.FC<Props> = ({ workspace, onSelectWorkspace, workspacesNum }) => (
   <div className="flex w-[90%] flex-col items-start justify-center gap-4 rounded-3xl border-2 border-ui-border bg-ui-base/95 p-10 py-16 shadow-[3px_0px_15px_rgba(0,0,0,0.1)] sm:h-screen sm:w-[50vw] sm:rounded-none sm:border-r-2 sm:bg-ui-base sm:p-16">
     {/* Application logo */}
     <Logo className="h-24 text-ui-text-muted" />
@@ -36,7 +37,7 @@ const AsideContent: React.FC<Props> = ({ workspace, onSelectWorkspace }) => (
       <Select
         placeholder="Selecciona un workspace"
         value={workspace}
-        options={Array.from({ length: 9 }, (_, i) => ({
+        options={Array.from({ length: workspacesNum }, (_, i) => ({
           value: `${i + 1}`,
           label: `Workspace ${i + 1}`,
         }))}
@@ -45,7 +46,14 @@ const AsideContent: React.FC<Props> = ({ workspace, onSelectWorkspace }) => (
     </div>
 
     {/* Entry button */}
-    <Button className="mt-4 flex w-full flex-row items-center justify-center gap-2 tracking-wide">
+    <Button
+      className="mt-4 flex w-full flex-row items-center justify-center gap-2 tracking-wide"
+      onClick={() => {
+        if (workspace) {
+          window.location.href = `/user${workspace}`
+        }
+      }}
+    >
       <FaArrowRightToBracket className="text-base" />
       Entrar
     </Button>
